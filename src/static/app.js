@@ -37,18 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // Build participants HTML (bulleted list) or fallback message
         const participantsHtml =
           details.participants && details.participants.length
-            ? `<ul class="participants-list" style="margin:6px 0 0 16px;padding:0;">
-                 ${details.participants.map(p => `<li style="margin:4px 0;">${escapeHtml(p)}</li>`).join("")}
+            ? `<ul class="participants-list">
+                 ${details.participants.map(p => `<li>${escapeHtml(p)}</li>`).join("")}
                </ul>`
-            : `<p class="no-participants" style="font-style:italic;color:#666;margin:6px 0 0;">No participants yet</p>`;
+            : `<p class="no-participants">No participants yet</p>`;
 
         activityCard.innerHTML = `
-          <h4 style="margin:0 0 6px 0;">${escapeHtml(name)}</h4>
-          <p style="margin:0 0 6px 0;color:#333;">${escapeHtml(details.description)}</p>
-          <p style="margin:0 0 6px 0;"><strong>Schedule:</strong> ${escapeHtml(details.schedule)}</p>
-          <p style="margin:0 0 8px 0;"><strong>Availability:</strong> ${spotsLeft} spots left</p>
-          <div class="participants-section" style="border-top:1px solid #eee;padding-top:8px;">
-            <h5 style="margin:0 0 6px 0;font-size:0.95em;color:#333;">Participants (${details.participants.length})</h5>
+          <h4>${escapeHtml(name)}</h4>
+          <p class="activity-desc">${escapeHtml(details.description)}</p>
+          <p><strong>Schedule:</strong> ${escapeHtml(details.schedule)}</p>
+          <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <div class="participants-section">
+            <h5>Participants (${details.participants.length})</h5>
             ${participantsHtml}
           </div>
         `;
